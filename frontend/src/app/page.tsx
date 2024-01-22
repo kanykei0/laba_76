@@ -20,7 +20,12 @@ export default function Home() {
   };
 
   return (
-    <Grid container direction="column" maxWidth="lg" sx={{ mx: "auto" }}>
+    <Grid
+      container
+      direction="column"
+      maxWidth="md"
+      sx={{ mx: "auto", mt: "20px" }}
+    >
       <div>
         <MessagesList />
       </div>

@@ -31,45 +31,63 @@ const MessageForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
   };
 
   return (
-    <form onSubmit={submitFormHandler}>
-      <Grid container direction="row" spacing={2}>
-        <Grid item xs>
-          <TextField
-            type="text"
-            id="author"
-            label="Author"
-            name="author"
-            value={state.author}
-            onChange={inputChange}
-            required
-          />
+    <Grid
+      sx={{
+        minHeight: "150px",
+        pt: "10px",
+      }}
+    >
+      <form onSubmit={submitFormHandler}>
+        <Grid
+          container
+          direction="row"
+          spacing={2}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Grid item xs>
+            <TextField
+              sx={{ background: "white", opacity: "0.8", width: "300px" }}
+              type="text"
+              id="author"
+              label="Author"
+              name="author"
+              value={state.author}
+              onChange={inputChange}
+              required
+            />
+          </Grid>
+          <Grid item xs>
+            <TextField
+              sx={{ background: "white", opacity: "0.8", width: "450px" }}
+              type="text"
+              id="message"
+              label="Message"
+              name="message"
+              value={state.message}
+              onChange={inputChange}
+              required
+            />
+          </Grid>
+          <Grid item xs>
+            <LoadingButton
+              sx={{ py: "15px" }}
+              type="submit"
+              color="info"
+              variant="contained"
+              disabled={isLoading}
+              loading={isLoading}
+              loadingPosition="end"
+              endIcon={<SendIcon />}
+            >
+              Send
+            </LoadingButton>
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <TextField
-            type="text"
-            id="message"
-            label="Message"
-            name="message"
-            value={state.message}
-            onChange={inputChange}
-            required
-          />
-        </Grid>
-        <Grid item xs>
-          <LoadingButton
-            type="submit"
-            color="primary"
-            variant="contained"
-            disabled={isLoading}
-            loading={isLoading}
-            loadingPosition="end"
-            endIcon={<SendIcon />}
-          >
-            Send
-          </LoadingButton>
-        </Grid>
-      </Grid>
-    </form>
+      </form>
+    </Grid>
   );
 };
 

@@ -19,8 +19,15 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
           <CssBaseline />
           <html lang="en">
-            <body>
-              <main>
+            <body
+              style={{
+                background:
+                  "url('https://blog.1a23.com/wp-content/uploads/sites/2/2020/02/Desktop.png')",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }}
+            >
+              <main style={{ height: "100vh", overflowY: "auto" }}>
                 <Container maxWidth="xl">{children}</Container>
               </main>
             </body>
