@@ -12,6 +12,7 @@ const MessagesList = () => {
       const messageResponse = await axiosApi.get<Message[]>("/");
       return messageResponse.data;
     },
+    refetchInterval: 2000,
   });
 
   let messagesArea: React.ReactNode = <CircularProgress />;

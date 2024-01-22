@@ -19,6 +19,7 @@ const MessageForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
   const submitFormHandler = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(state);
+    setState({ message: "", author: "" });
   };
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
