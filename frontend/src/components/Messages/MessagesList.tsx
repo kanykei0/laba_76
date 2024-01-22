@@ -2,7 +2,7 @@ import axiosApi from "@/axiosApi";
 import { Message } from "@/types";
 import { CircularProgress, Grid } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import MessageItem from "./MessageItem";
 
 const MessagesList = () => {
@@ -14,6 +14,18 @@ const MessagesList = () => {
     },
     refetchInterval: 2000,
   });
+
+  const toBotom = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (toBotom.current) {
+      toBotom.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useLayoutEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   let messagesArea: React.ReactNode = <CircularProgress />;
 
@@ -29,8 +41,9 @@ const MessagesList = () => {
   }
   return (
     <div>
-      <Grid item container>
+      <Grid container maxWidth="md" sx={{ mx: "auto" }} direction="column">
         {messagesArea}
+        <div ref={toBotom}></div>
       </Grid>
     </div>
   );

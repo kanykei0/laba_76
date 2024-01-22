@@ -33,8 +33,6 @@ messagesRouter.get("/", async (req, res, next) => {
     let lastMessages: MessageApi[] = [];
     const queryDate = req.query.datetime as string;
 
-    console.log(queryDate);
-
     if (queryDate !== undefined) {
       const date = new Date(queryDate);
       if (isNaN(date.getDate())) {

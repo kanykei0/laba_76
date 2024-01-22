@@ -3,6 +3,7 @@ import axiosApi from "@/axiosApi";
 import MessageForm from "@/components/MessageForm/MessageForm";
 import MessagesList from "@/components/Messages/MessagesList";
 import { MessageMutation } from "@/types";
+import { Grid } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 
 export default function Home() {
@@ -19,9 +20,13 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <MessagesList />
-      <MessageForm isLoading={mutation.isPending} onSubmit={onSubmit} />
-    </main>
+    <Grid container direction="column" maxWidth="lg" sx={{ mx: "auto" }}>
+      <div>
+        <MessagesList />
+      </div>
+      <div>
+        <MessageForm isLoading={mutation.isPending} onSubmit={onSubmit} />
+      </div>
+    </Grid>
   );
 }
