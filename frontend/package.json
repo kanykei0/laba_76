@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
+    "@mui/lab": "^5.0.0-alpha.161",
     "@mui/material": "^5.15.4",
     "@mui/material-nextjs": "^5.15.3",
     "next": "14.0.4",
@@ -20,6 +21,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@tanstack/react-query": "^5.17.19",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
