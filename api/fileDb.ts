@@ -27,7 +27,7 @@ const fileDb = {
     };
     data.push(message);
 
-    await this.save;
+    await this.save();
 
     return message;
   },

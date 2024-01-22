@@ -1,6 +1,6 @@
 import { Router } from "express";
 import fileDb from "../fileDb";
-import { Message } from "../types";
+import { Message, MessageApi } from "../types";
 
 const messagesRouter = Router();
 
@@ -30,7 +30,25 @@ messagesRouter.post("/", async (req, res, next) => {
 messagesRouter.get("/", async (req, res, next) => {
   try {
     const messages = await fileDb.getMessages();
-    res.send(messages);
+    let lastMessages: MessageApi[] = [];
+    const queryDate = req.query.datetime as string;
+
+    console.log(queryDate);
+
+    if (queryDate !== undefined) {
+      const date = new Date(queryDate);
+      if (isNaN(date.getDate())) {
+        return res.status(400).send({ error: "Wrong date" });
+      }
+      let index = messages.findIndex((item) => item.datetime === queryDate);
+      if (index !== -1) {
+        let result = messages.slice(index + 1, index + 31);
+        lastMessages = result;
+      }
+    } else {
+      lastMessages = messages.slice(-30);
+    }
+    res.send(lastMessages);
   } catch (e) {
     next(e);
   }
